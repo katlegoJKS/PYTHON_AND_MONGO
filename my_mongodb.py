@@ -16,5 +16,10 @@ def create_visitor(visitor):
     result = Visiter.insert_one(mydict)
     return result
 
-visitor = create_visitor('')
-print('One post: {0}'.format(visitor.inserted_id))
+def list_visitors(visitors):
+    for every_visitor in Visiter.find():
+        print(every_visitor)
+
+
+visitors = list_visitors('')
+print(visitors)
