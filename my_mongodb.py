@@ -20,6 +20,38 @@ def list_visitors(visitors):
     for every_visitor in Visiter.find():
         print(every_visitor)
 
+def delete_visitor(dltvisitor):
+    myquery = { "visiter_name": "Jack"}
+    Visiter.delete_one(myquery)
 
-visitors = list_visitors('')
-print(visitors)
+def update_visitor(upvisitor):
+    query = { "visiter_name": "Kat" }
+    newvalues = { "$set": { "visiters_age": "30" } }
+    Visiter.update_one(query, newvalues)
+
+def visitor_details(visitorinfo):
+    myquery = { "visiter_name": "Kat" }
+    mydoc = Visiter.find(myquery)
+    return mydoc
+
+def delete_all(deleteall):
+    collection = Visiter.delete_many({})
+    print(collection.deleted_count, "documents deleted")
+
+
+# visitor = create_visitor('')
+# print(visitor)
+
+# visitors = list_visitors('')
+# print(visitors)
+
+# dltvisitor = delete_visitor('')
+
+# upvisitor =update_visitor('')
+# print(upvisitor)
+
+# visitorinfo = visitor_details('')
+# print(visitorinfo)
+
+deleteall = delete_all('')
+
