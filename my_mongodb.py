@@ -31,28 +31,27 @@ def delete_all(delete_all_enteries):
     return "documents deleted"
 
 
-# visitor = create_visitor({
-#     'visitor_name': 'Junkis malwela',
+# visitor = create_visitor(
+#     {'visitor_name': 'Junkis malwela',
 #     'visitors_age': '28',
 #     'date_of_vist': '01 Apr 2020',
 #     'time_of_visit': '115H00',
 #     'name_of_the_person_who_assisted_visitor': 'Daniels',
-#     'comments': 'Shap yena he was very much helpful shem'
-# })
-# print(visitor)
+#     'comments': 'Shap yena he was very much helpful shem'}
+#     )
 
 # visitors = list_visitors('')
-# print(visitors)
 
-# delete_a_visitor = delete_visitor({
-#     'visitor_name': "Jack"
-# })
+# delete_a_visitor = delete_visitor(
+#     {'visitor_name': "Jack"}
+#     )
 
 # visitor_to_update =update_visitor(
 #     {'visitor_name': "Junkis malwela"}, {'$set': { 'visitors_age': "55" }}
 #     )
-# print(visitor_to_update)
 
-# visitor_info = visitor_details({ "visitor_name": "Kat" })
+# visitor_info = visitor_details(
+#     { "visitor_name": "Kat" }
+#     )
 
 # delete_all_enteries = delete_all('')
