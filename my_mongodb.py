@@ -1,57 +1,58 @@
 import pymongo
+import os
 
-client = pymongo.MongoClient("mongodb://root:rootpass@localhost:27018/")
+HOST = os.environ.get('MONGO_DB')
+
+client = pymongo.MongoClient(HOST)
 db = client["UmuziProspects"]
-Visiter = db["Visiter"] 
+
+Visitor = db["Visitor"] 
 
 def create_visitor(visitor):
-    mydict = {
-        'visiter_name': 'Jack',
-        'visiters_age': '20',
-        'date_of_vist': '01 January 2020',
-        'time_of_visit': '13H00',
-        'name_of_the_person_who_assisted_visiter': 'Daniels',
-        'comments': 'Daniels was very much helpful'
-    }
-    result = Visiter.insert_one(mydict)
+    result = Visitor.insert_one(visitor)
     return result
 
 def list_visitors(visitors):
-    for every_visitor in Visiter.find():
+    for every_visitor in Visitor.find():
         print(every_visitor)
 
-def delete_visitor(dltvisitor):
-    myquery = { "visiter_name": "Jack"}
-    Visiter.delete_one(myquery)
+def delete_visitor(delete_a_visitor):
+    Visitor.delete_one(delete_a_visitor)
 
-def update_visitor(upvisitor):
-    query = { "visiter_name": "Kat" }
-    newvalues = { "$set": { "visiters_age": "30" } }
-    Visiter.update_one(query, newvalues)
+def update_visitor(visitor_to_update, visitors_new_age):
+    Visitor.update_one(visitor_to_update, visitors_new_age)
 
-def visitor_details(visitorinfo):
-    myquery = { "visiter_name": "Kat" }
-    mydoc = Visiter.find(myquery)
-    return mydoc
+def visitor_details(visitor_info):
+    documentary = Visitor.find(visitor_info)
+    return documentary
 
-def delete_all(deleteall):
-    collection = Visiter.delete_many({})
-    print(collection.deleted_count, "documents deleted")
+def delete_all(delete_all_enteries):
+    collection = Visitor.delete_many({})
+    return "documents deleted"
 
 
-# visitor = create_visitor('')
+# visitor = create_visitor({
+#     'visitor_name': 'Junkis malwela',
+#     'visitors_age': '28',
+#     'date_of_vist': '01 Apr 2020',
+#     'time_of_visit': '115H00',
+#     'name_of_the_person_who_assisted_visitor': 'Daniels',
+#     'comments': 'Shap yena he was very much helpful shem'
+# })
 # print(visitor)
 
 # visitors = list_visitors('')
 # print(visitors)
 
-# dltvisitor = delete_visitor('')
+# delete_a_visitor = delete_visitor({
+#     'visitor_name': "Jack"
+# })
 
-# upvisitor =update_visitor('')
-# print(upvisitor)
+# visitor_to_update =update_visitor(
+#     {'visitor_name': "Junkis malwela"}, {'$set': { 'visitors_age': "55" }}
+#     )
+# print(visitor_to_update)
 
-# visitorinfo = visitor_details('')
-# print(visitorinfo)
+# visitor_info = visitor_details({ "visitor_name": "Kat" })
 
-deleteall = delete_all('')
-
+# delete_all_enteries = delete_all('')
