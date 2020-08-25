@@ -9,8 +9,8 @@ db = client["UmuziProspects"]
 Visitor = db["Visitor"] 
 
 def create_visitor(visitor):
-    result = Visitor.insert_one(visitor)
-    return result
+    Visitor.insert_one(visitor)
+    return "visitor successfully created"
 
 def list_visitors(visitors):
     for every_visitor in Visitor.find():
@@ -18,16 +18,18 @@ def list_visitors(visitors):
 
 def delete_visitor(delete_a_visitor):
     Visitor.delete_one(delete_a_visitor)
+    return "successfully deleted a visitor"
 
 def update_visitor(visitor_to_update, visitors_new_age):
     Visitor.update_one(visitor_to_update, visitors_new_age)
+    return "successfully updated visitor"
 
 def visitor_details(visitor_info):
     documentary = Visitor.find(visitor_info)
     return documentary
 
 def delete_all(delete_all_enteries):
-    collection = Visitor.delete_many({})
+    Visitor.delete_many({})
     return "documents deleted"
 
 
